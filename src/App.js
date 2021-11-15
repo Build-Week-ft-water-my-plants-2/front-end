@@ -4,6 +4,13 @@ import { Link, Route, Switch} from 'react-router-dom';
 import About from './components/About'
 import Signup from './components/Signup'
 import Login from './components/Login'
+import styled from "styled-components";
+
+const Bttn = styled.div`
+display: flex;
+flex-direction: row-reverse;
+`
+
 
 function App() {
   
@@ -11,7 +18,9 @@ function App() {
   return(
     <div className= "App">
       <nav> 
-        <div className= "sign-in-buttons">
+         
+        <div className= "buttons">
+        <Bttn> 
           <Link to="/">
           <button className="home"> Home </button> 
           </Link>
@@ -20,8 +29,10 @@ function App() {
         </Link>
         <Link to="/login">
           <button className="login"> Login </button>
-        </Link> 
+        </Link>
+        </Bttn> 
         </div>
+        
       </nav>
       <Switch>
         <Route exact path = "/">
