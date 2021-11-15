@@ -1,6 +1,6 @@
 import "./App.css"
 import React, { useState, useEffect } from 'react'
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch} from 'react-router-dom';
 import About from './components/About'
 import Signup from './components/Signup'
 import Login from './components/Login'
@@ -24,7 +24,7 @@ function App() {
         </div>
       </nav>
       <Switch>
-        <Route path = "/">
+        <Route exact path = "/">
           <About/>
         </Route>
         <Route path = "/sign-up">
