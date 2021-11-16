@@ -1,24 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react';
+import url from './URL'
+import axios from 'axios'
 
 // imports from react-router-dom go here //
 
-const Signup = (props) => {
-
-  const {values, submit, update, disabled, errors} = props;
-
-  const onSubmit = evt => {
-    evt.preventDefault()
-    submit()
+  const initialFormValues = {
+    username: '',
+    password: '',
+    phoneNumber: '',
   }
+  
+  
+  function Signup() {
+    const [formValues, setFormValues] = useState(initialFormValues);
+  
+    const onChange = (name, value) => {
+      setFormValues({ ...formValues, [name]: value })
+    }
+  
+    const onSubmit = (e) => {
+      e.preventDefault()
 
-  const onChange = evt => {
-    const name = evt.target.name;
-    const value  = evt.target;
-    update(name, value);
-  }
+      axios.post(`${url}/api/users/signup`, formValues)
+      .then(res => { 
+      })
+      .catch(err =>{
+      })
+      
+    }
 
   return (
-    <div className='login-wrapper'>
+    <div className='signup-wrapper'>
 
       {/** image placeholder */}
       <div className='img-container'>
@@ -32,7 +44,7 @@ const Signup = (props) => {
         <h2>Register</h2>
         <label>
           <input
-            value={values.phoneNumber}
+            value={formValues.phoneNumber}
             placeholder='Phone Number'
             name='phoneNumber'
             type='text'
@@ -41,7 +53,7 @@ const Signup = (props) => {
         </label>
         <label>
           <input
-            value={values.username}
+            value={formValues.username}
             placeholder='Username'
             name='username'
             type='text'
@@ -50,7 +62,7 @@ const Signup = (props) => {
         </label>
         <label>
           <input
-            value={values.password}
+            value={formValues.password}
             placeholder='Password'
             name='password'
             type='password'
@@ -60,11 +72,8 @@ const Signup = (props) => {
 
         { /** disable button */}
         <div className='form-group submit'>
-          <button disabled={disabled}>Register</button>
+          <button>Register</button>
           <div className='errors'>
-            <div>{errors.phoneNumber}</div>
-            <div>{errors.username}</div>
-            <div>{errors.password}</div>
           </div>
         </div>
 
