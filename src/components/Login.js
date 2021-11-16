@@ -13,17 +13,19 @@ const initialFormValues = {
 function Login() {
   const [formValues, setFormValues] = useState(initialFormValues);
 
-  const onChange = (name, value) => {
+  const onChange = (e) => {
+    const {name, value} = e.target;
     setFormValues({ ...formValues, [name]: value })
   }
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     axios.post(`${url}/api/users/login`, formValues)
     .then(res => {
-      
+      console.log(res);
     })
     .catch(err =>{
-     
+      console.log(err.response.data.message);
     })
   }
 
