@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import url from './URL'
+import Plant from './Plant'
+import PlantDetails from './PlantDetails'
+import PlantForm from './PlantForm'
 
 
 const initialFormValues = {
@@ -12,7 +15,7 @@ const initialFormValues = {
 
 const initialPlants = []
 
-function FlowerForm() {
+function PlantPage() {
 
   const [plants, setPlants] = useState(initialPlants)          
   const [formValues, setFormValues] = useState(initialFormValues) 
@@ -61,7 +64,7 @@ function FlowerForm() {
     <div className='container'>
       <header><h1>Plant Database</h1></header>
 
-      <Plant
+      <PlantForm
         values={formValues}
         change={inputChange}
         submit={formSubmit}
