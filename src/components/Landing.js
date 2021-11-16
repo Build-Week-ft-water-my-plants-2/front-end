@@ -21,15 +21,15 @@ function PlantPage() {
   const [formValues, setFormValues] = useState(initialFormValues) 
 
   const getPlants = () => {
-    axios.get(`${url}`)
+    axios.get(`${url}/api/plants`)
       .then(res => {
-        setFriends(res.data);
+        setPlants(res.data);
       })
       .catch(err => console.error(err))
   }
 
   const postNewPlant = newPlant => {
-    axios.post(`${url}`, newPlant)
+    axios.post(`${url}/api/plants`, newPlant)
       .then(res => {
         setPlants([res.data, ...plants]);
       })
@@ -83,4 +83,4 @@ function PlantPage() {
 
 
 
-export default FlowerForm;
+export default PlantPage;

@@ -1,3 +1,3 @@
-const a = 'https://pokeapi.co/api/v2/pokemon?limit=151'
+const a = 'https://back-end-web47-water-my-plants.herokuapp.com'
 
 export default a

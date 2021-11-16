@@ -14,7 +14,8 @@ import axios from 'axios'
   function Signup() {
     const [formValues, setFormValues] = useState(initialFormValues);
   
-    const onChange = (name, value) => {
+    const onChange = (e) => {
+      const {name, value} = e.target;
       setFormValues({ ...formValues, [name]: value })
     }
   
@@ -23,8 +24,10 @@ import axios from 'axios'
 
       axios.post(`${url}/api/users/signup`, formValues)
       .then(res => { 
+        console.log(res);
       })
       .catch(err =>{
+        console.error(err);
       })
       
     }
