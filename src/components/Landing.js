@@ -1,19 +1,83 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
-
-const initialPlant = {
-    id: 1,
-    nickname: 'SunFlower',
-    species: '',
-    h2oFrequency: '',
-}
+import url from './URL'
 
 
 const initialFormValues = {
     nickname: '',
     species: '',
     h2oFrequency: '',
+    imageURL: '',
 }
 
-// SDASDASDASDASDASDASDASD
+const initialPlants = []
+
+function FlowerForm() {
+
+  const [plants, setPlants] = useState(initialPlants)          
+  const [formValues, setFormValues] = useState(initialFormValues) 
+
+  const getPlants = () => {
+    axios.get(`${url}`)
+      .then(res => {
+        setFriends(res.data);
+      })
+      .catch(err => console.error(err))
+  }
+
+  const postNewPlant = newPlant => {
+    axios.post(`${url}`, newPlant)
+      .then(res => {
+        setPlants([res.data, ...plants]);
+      })
+      .catch(err => console.error(err))
+      .finally(() => {
+        setFormValues(initialFormValues);
+      })
+  }
+
+  const inputChange = (name, value) => {
+    setFormValues({
+      ...formValues,
+      [name]: value 
+    })
+  }
+
+  const formSubmit = () => {
+    const newPlant = {
+      nickname: formValues.nickname.trim(),
+      species: formValues.species.trim(),
+      h2oFrequency: formValues.h2oFrequency.trim(),
+      imageURL: formValues.imageURL,
+    }
+    postNewPlant(newPlant);
+}
+
+    useEffect(() => {
+        getPlants()
+    }, [])
+
+  return(
+    <div className='container'>
+      <header><h1>Plant Database</h1></header>
+
+      <Plant
+        values={formValues}
+        change={inputChange}
+        submit={formSubmit}
+      />
+
+      {
+        plants.map(plant => {
+          return (
+            <Plant key={plant.id} details={plant} />
+          )
+        })
+      }
+      </div>
+  )
+}
+
+
+
+export default FlowerForm;
