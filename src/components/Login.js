@@ -1,15 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react';
+import url from './URL'
+import axios from 'axios'
 
-function Login(props) {
-  const { values, submit, update, disabled, errors } = props
-  const onSubmit = (evt) => {
-    evt.preventDefault()
-    submit()
+
+const initialFormValues = {
+  username: '',
+  password: '',
+}
+
+
+
+function Login() {
+  const [formValues, setFormValues] = useState(initialFormValues);
+
+  const onChange = (name, value) => {
+    setFormValues({ ...formValues, [name]: value })
   }
-  const onChange = (evt) => {
-    const name = evt.target.name
-    const value = evt.target
-    update(name, value)
+
+  const onSubmit = () => {
+    axios.post(`${url}/api/users/login`, formValues)
+    .then(res => {
+      
+    })
+    .catch(err =>{
+     
+    })
   }
 
   return (
@@ -28,7 +43,7 @@ function Login(props) {
         <h2>LOGIN</h2>
         <label>
           <input
-            value={values.username}
+            value={formValues.username}
             onChange={onChange}
             placeholder='Username'
             name='username'
@@ -37,7 +52,7 @@ function Login(props) {
         </label>
         <label>
           <input
-            value={values.password}
+            value={formValues.password}
             onChange={onChange}
             placeholder='Password'
             name='password'
@@ -47,10 +62,8 @@ function Login(props) {
 
         { /** disable button */}
         <div className='form-group submit'>
-          <button disabled={disabled}>Register</button>
+          <button>Login</button>
           <div className='errors'>
-            <div>{errors.username}</div>
-            <div>{errors.password}</div>
           </div>
         </div>
 
@@ -58,7 +71,6 @@ function Login(props) {
           <h2>
             Don't have account yet? <span>REGISTER</span>
           </h2>
-          <button className='submit-login'>LOGIN</button>
         </div>
       </div>
     </form>
