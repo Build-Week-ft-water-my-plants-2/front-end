@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react"
 
+import React, { useState, useEffect } from "react"
+import { Switch, Route } from "react-router-dom";
 import url from "./URL"
 import Plant from "./Plant"
-// import PlantDetails from './PlantDetails'
+import PlantDetails from './PlantDetails'
 import PlantForm from "./PlantForm"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
@@ -11,11 +12,14 @@ const initialFormValues = {
   species: "",
   h2oFrequency: "",
   imageURL: "",
-}
 
-const initialPlants = []
+};
+
+
+const initialPlants = [];
 
 function PlantPage() {
+
   const [plants, setPlants] = useState(initialPlants)
   const [formValues, setFormValues] = useState(initialFormValues)
 
@@ -41,12 +45,15 @@ function PlantPage() {
       })
   }
 
+
   const inputChange = (name, value) => {
     setFormValues({
       ...formValues,
       [name]: value,
+
     })
   }
+
 
   const formSubmit = () => {
     const newPlant = {
@@ -54,27 +61,40 @@ function PlantPage() {
       species: formValues.species.trim(),
       h2oFrequency: formValues.h2oFrequency.trim(),
       imageURL: formValues.imageURL,
-    }
-    postNewPlant(newPlant)
-  }
+
+    };
+    postNewPlant(newPlant);
+  };
 
   useEffect(() => {
-    getPlants()
-  }, [])
+    getPlants();
+  }, []);
 
   return (
-    <div className="container">
-      <header>
-        <h1>Plant Database</h1>
-      </header>
+    <Switch>
+      <Route exact path="/plants">
+        <div className="container">
+          <header>
+            <h1>Plant Database</h1>
+          </header>
 
-      <PlantForm values={formValues} change={inputChange} submit={formSubmit} />
+          <PlantForm
+            values={formValues}
+            change={inputChange}
+            submit={formSubmit}
+          />
 
-      {plants.map((plant) => {
-        return <Plant key={plant.id} details={plant} />
-      })}
-    </div>
-  )
+          {plants.map((plant) => {
+            return <Plant key={plant.id} details={plant} />;
+          })}
+        </div>
+      </Route>
+      <Route path="/plants/:id">
+        <PlantDetails plants = {plants} />
+      </Route>
+    </Switch>
+  );
 }
 
-export default PlantPage
+export default PlantPage;
+

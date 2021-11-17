@@ -11,7 +11,9 @@ function Plant({ details }) {
       <p>Nickname: {details.nickname}</p>
       <p>Species: {details.species}</p>
       <p>Watering Frequency: {details.h2oFrequency}</p>
-      <img src={details.imageURL} alt="123" style={{ maxWidth: "300px" }} />
+
+      <img src={details.imageURL} alt='this is a plant' style={{ maxWidth: "300px" }} />
+
     </div>
   )
 }
