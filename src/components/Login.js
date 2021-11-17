@@ -8,7 +8,7 @@ const initialFormValues = {
   password: "",
 }
 
-function Login() {
+function Login({ refreshLoggedIn }) {
   const { push } = useHistory()
   const [formValues, setFormValues] = useState(initialFormValues)
 
@@ -22,8 +22,8 @@ function Login() {
     axios
       .post(`${url}/api/users/login`, formValues)
       .then((res) => {
-        console.log(res)
         window.localStorage.setItem("token", res.data.token)
+        refreshLoggedIn()
         push("/landing")
       })
       .catch((err) => {
