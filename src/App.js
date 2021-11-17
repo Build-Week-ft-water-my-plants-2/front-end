@@ -1,12 +1,20 @@
 import React from "react"
-import { Link, Route, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import About from "./components/About"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
+import withRoot from "./withRoot"
 
+import Link from "@mui/material/Link"
 import Box from "@mui/material/Box"
 import AppBar from "./components/AppBar"
 import Toolbar from "./components/Toolbar"
+
+const rightLink = {
+  fontSize: 16,
+  color: "common.white",
+  ml: 3,
+}
 
 function App() {
   return (
@@ -15,26 +23,29 @@ function App() {
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ flex: 1 }} />
           <Link
-            to="/"
-            style={{ fontSize: 24, textDecoration: "none", color: "inherit" }}
+            variant="h6"
+            underline="none"
+            color="inherit"
+            href="/"
+            sx={{ fontSize: 24 }}
           >
             {"Water My Plants"}
           </Link>
           <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
             <Link
-              to="/login"
-              style={{
-                fontSize: 18,
-                textDecoration: "none",
-                color: "inherit",
-                marginRight: "1rem",
-              }}
+              color="inherit"
+              variant="h6"
+              underline="none"
+              href="/login"
+              sx={rightLink}
             >
-              {"Login"}
+              {"Sign In"}
             </Link>
             <Link
-              to="/sign-up"
-              style={{ fontSize: 18, textDecoration: "none", color: "inherit" }}
+              variant="h6"
+              underline="none"
+              href="/sign-up"
+              sx={{ ...rightLink, color: "secondary.main" }}
             >
               {"Sign Up"}
             </Link>
@@ -57,4 +68,4 @@ function App() {
   )
 }
 
-export default App
+export default withRoot(App)
