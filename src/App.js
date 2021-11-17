@@ -6,7 +6,7 @@ import Signup from "./components/Signup"
 import Login from "./components/Login"
 import styled from "styled-components"
 import PrivateRoute from "./components/PrivateRoute"
-import Testing from "./components/Testing"
+
 import PlantPage from "./components/Landing"
 const Bttn = styled.div`
   display: flex;
