@@ -21,9 +21,7 @@ function Signup() {
   const onSubmit = (e) => {
     axios
       .post(`${url}/api/users/signup`, formValues)
-      .then((res) => {
-        console.log(res)
-      })
+      .then((res) => {})
       .catch((err) => {
         console.error(err)
       })

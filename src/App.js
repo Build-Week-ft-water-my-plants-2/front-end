@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Route, Switch } from "react-router-dom"
 import PrivateRoute from "./components/PrivateRoute"
 import About from "./components/About"
@@ -19,6 +19,14 @@ const rightLink = {
 }
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(
+    !!window.localStorage.getItem("token")
+  )
+
+  const refreshLoggedIn = () => {
+    setLoggedIn(!!window.localStorage.getItem("token"))
+  }
+
   return (
     <div>
       <AppBar position="fixed">
@@ -33,25 +41,49 @@ function App() {
           >
             {"Water My Plants"}
           </Link>
-          <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              href="/login"
-              sx={rightLink}
-            >
-              {"Sign In"}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              href="/sign-up"
-              sx={{ ...rightLink, color: "secondary.main" }}
-            >
-              {"Sign Up"}
-            </Link>
-          </Box>
+          {loggedIn && (
+            <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+              <Link
+                color="inherit"
+                variant="h6"
+                underline="none"
+                href="/landing"
+                sx={rightLink}
+              >
+                {"Plants"}
+              </Link>
+              <Link
+                onClick={() => window.localStorage.removeItem("token")}
+                variant="h6"
+                underline="none"
+                href="/"
+                sx={{ ...rightLink, color: "secondary.main" }}
+              >
+                {"Log out"}
+              </Link>
+            </Box>
+          )}
+          {!loggedIn && (
+            <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+              <Link
+                color="inherit"
+                variant="h6"
+                underline="none"
+                href="/login"
+                sx={rightLink}
+              >
+                {"Sign In"}
+              </Link>
+              <Link
+                variant="h6"
+                underline="none"
+                href="/sign-up"
+                sx={{ ...rightLink, color: "secondary.main" }}
+              >
+                {"Sign Up"}
+              </Link>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
       <Toolbar />
@@ -61,10 +93,10 @@ function App() {
           <About />
         </Route>
         <Route path="/sign-up">
-          <Signup />
+          <Signup refreshLoggedIn={refreshLoggedIn} />
         </Route>
         <Route path="/login">
-          <Login />
+          <Login refreshLoggedIn={refreshLoggedIn} />
         </Route>
       </Switch>
     </div>

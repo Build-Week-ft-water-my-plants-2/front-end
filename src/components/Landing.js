@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from "react"
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom"
 import url from "./URL"
 import Plant from "./Plant"
-import PlantDetails from './PlantDetails'
+import PlantDetails from "./PlantDetails"
 import PlantForm from "./PlantForm"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
@@ -12,14 +11,11 @@ const initialFormValues = {
   species: "",
   h2oFrequency: "",
   imageURL: "",
+}
 
-};
-
-
-const initialPlants = [];
+const initialPlants = []
 
 function PlantPage() {
-
   const [plants, setPlants] = useState(initialPlants)
   const [formValues, setFormValues] = useState(initialFormValues)
 
@@ -27,7 +23,6 @@ function PlantPage() {
     axiosWithAuth()
       .get(`${url}/api/plants`)
       .then((res) => {
-        console.log(res)
         setPlants(res.data)
       })
       .catch((err) => console.error({ err }))
@@ -45,15 +40,12 @@ function PlantPage() {
       })
   }
 
-
   const inputChange = (name, value) => {
     setFormValues({
       ...formValues,
       [name]: value,
-
     })
   }
-
 
   const formSubmit = () => {
     const newPlant = {
@@ -61,14 +53,13 @@ function PlantPage() {
       species: formValues.species.trim(),
       h2oFrequency: formValues.h2oFrequency.trim(),
       imageURL: formValues.imageURL,
-
-    };
-    postNewPlant(newPlant);
-  };
+    }
+    postNewPlant(newPlant)
+  }
 
   useEffect(() => {
-    getPlants();
-  }, []);
+    getPlants()
+  }, [])
 
   return (
     <Switch>
@@ -85,16 +76,15 @@ function PlantPage() {
           />
 
           {plants.map((plant) => {
-            return <Plant key={plant.id} details={plant} />;
+            return <Plant key={plant.id} details={plant} />
           })}
         </div>
       </Route>
       <Route path="/landing/:id">
-        <PlantDetails plants = {plants} />
+        <PlantDetails plants={plants} setPlants={setPlants} />
       </Route>
     </Switch>
-  );
+  )
 }
 
-export default PlantPage;
-
+export default PlantPage
