@@ -5,7 +5,9 @@ import About from "./components/About"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
 import styled from "styled-components"
+import PrivateRoute from "./components/PrivateRoute"
 
+import PlantPage from "./components/Landing"
 const Bttn = styled.div`
   display: flex;
   flex-direction: row-reverse;
@@ -30,6 +32,7 @@ function App() {
         </div>
       </nav>
       <Switch>
+        <PrivateRoute path="/landing" component={PlantPage} />
         <Route exact path="/">
           <About />
         </Route>
