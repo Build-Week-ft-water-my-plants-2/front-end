@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React from "react"
 
 function Plant({ details }) {
   if (!details) {
@@ -7,12 +6,12 @@ function Plant({ details }) {
   }
 
   return (
-    <div className='plant container'>
+    <div className="plant container">
       <h2>{details.id}</h2>
       <p>Nickname: {details.nickname}</p>
       <p>Species: {details.species}</p>
       <p>Watering Frequency: {details.h2oFrequency}</p>
-      <img src = {details.imageURL} alt='123' />
+      <img src={details.imageURL} alt="123" style={{ maxWidth: "300px" }} />
     </div>
   )
 }
