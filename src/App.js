@@ -18,7 +18,6 @@ const rightLink = {
   ml: 3,
 }
 
-
 function App() {
   return (
     <div>
