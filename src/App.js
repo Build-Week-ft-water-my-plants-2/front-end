@@ -1,8 +1,10 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
+import PrivateRoute from "./components/PrivateRoute"
 import About from "./components/About"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
+import PlantPage from "./components/Landing"
 import withRoot from "./withRoot"
 
 import Link from "@mui/material/Link"
@@ -15,6 +17,7 @@ const rightLink = {
   color: "common.white",
   ml: 3,
 }
+
 
 function App() {
   return (
@@ -54,6 +57,7 @@ function App() {
       </AppBar>
       <Toolbar />
       <Switch>
+        <PrivateRoute path="/landing" component={PlantPage} />
         <Route exact path="/">
           <About />
         </Route>
