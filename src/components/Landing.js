@@ -4,6 +4,7 @@ import url from "./URL"
 import Plant from "./Plant"
 // import PlantDetails from './PlantDetails'
 import PlantForm from "./PlantForm"
+import { axiosWithAuth } from "../utils/axiosWithAuth"
 
 const initialFormValues = {
   nickname: "",
@@ -19,16 +20,17 @@ function PlantPage() {
   const [formValues, setFormValues] = useState(initialFormValues)
 
   const getPlants = () => {
-    axios
+    axiosWithAuth()
       .get(`${url}/api/plants`)
       .then((res) => {
+        console.log(res)
         setPlants(res.data)
       })
-      .catch((err) => console.error(err))
+      .catch((err) => console.error({ err }))
   }
 
   const postNewPlant = (newPlant) => {
-    axios
+    axiosWithAuth()
       .post(`${url}/api/plants`, newPlant)
       .then((res) => {
         setPlants([res.data, ...plants])
