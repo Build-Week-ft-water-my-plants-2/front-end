@@ -1,5 +1,5 @@
 import "./App.css"
-import React, { useState } from 'react';
+import React from "react"
 import { Link, Route, Switch } from "react-router-dom"
 import About from "./components/About"
 import Signup from "./components/Signup"
@@ -12,7 +12,6 @@ const Bttn = styled.div`
 `
 
 function App() {
-
   return (
     <div className="App">
       <nav>
