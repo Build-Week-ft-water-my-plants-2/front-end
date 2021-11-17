@@ -1,75 +1,75 @@
-import React, { useState } from 'react';
-import url from './URL'
-import axios from 'axios'
-
+import React, { useState } from "react"
+import url from "./URL"
+import axios from "axios"
+import { useHistory } from "react-router"
 
 const initialFormValues = {
-  username: '',
-  password: '',
+  username: "",
+  password: "",
 }
 
-
-
 function Login() {
-  const [formValues, setFormValues] = useState(initialFormValues);
+  const { push } = useHistory()
+  const [formValues, setFormValues] = useState(initialFormValues)
 
   const onChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target
     setFormValues({ ...formValues, [name]: value })
   }
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    axios.post(`${url}/api/users/login`, formValues)
-    .then(res => {
-      console.log(res);
-    })
-    .catch(err =>{
-      console.log(err.response.data.message);
-    })
+    e.preventDefault()
+    axios
+      .post(`${url}/api/users/login`, formValues)
+      .then((res) => {
+        console.log(res)
+        window.localStorage.setItem("token", res.data.token)
+        push("/landing")
+      })
+      .catch((err) => {
+        console.log(err.response.data.message)
+      })
   }
 
   return (
-    <form className='login-wrapper' onSubmit={onSubmit}>
-      
+    <form className="login-wrapper" onSubmit={onSubmit}>
       {/* image placeholder */}
-      <div className='img-container'>
-        <img src="#" alt="logo"/>
+      <div className="img-container">
+        <img src="#" alt="logo" />
       </div>
-      <div className='background-img'>
-        <img src="#" alt="logo"/>
+      <div className="background-img">
+        <img src="#" alt="logo" />
       </div>
 
       {/* login card */}
-      <div className='form-wrapper'>
+      <div className="form-wrapper">
         <h2>LOGIN</h2>
         <label>
           <input
             value={formValues.username}
             onChange={onChange}
-            placeholder='Username'
-            name='username'
-            type='text'
+            placeholder="Username"
+            name="username"
+            type="text"
           />
         </label>
         <label>
           <input
             value={formValues.password}
             onChange={onChange}
-            placeholder='Password'
-            name='password'
-            type='password'
+            placeholder="Password"
+            name="password"
+            type="password"
           />
         </label>
 
-        { /** disable button */}
-        <div className='form-group submit'>
+        {/** disable button */}
+        <div className="form-group submit">
           <button>Login</button>
-          <div className='errors'>
-          </div>
+          <div className="errors"></div>
         </div>
 
-        <div className='account-bot'>
+        <div className="account-bot">
           <h2>
             Don't have account yet? <span>REGISTER</span>
           </h2>
@@ -80,6 +80,5 @@ function Login() {
 }
 
 export default Login
-
 
 //** Styling below */
