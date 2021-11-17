@@ -1,36 +1,61 @@
-import "./App.css"
 import React from "react"
-import { Link, Route, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
+import PrivateRoute from "./components/PrivateRoute"
 import About from "./components/About"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
-import styled from "styled-components"
-import PrivateRoute from "./components/PrivateRoute"
-
 import PlantPage from "./components/Landing"
-const Bttn = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-`
+import withRoot from "./withRoot"
+
+import Link from "@mui/material/Link"
+import Box from "@mui/material/Box"
+import AppBar from "./components/AppBar"
+import Toolbar from "./components/Toolbar"
+
+const rightLink = {
+  fontSize: 16,
+  color: "common.white",
+  ml: 3,
+}
+
 
 function App() {
   return (
-    <div className="App">
-      <nav>
-        <div className="buttons">
-          <Bttn>
-            <Link to="/">
-              <button className="home"> Home </button>
+    <div>
+      <AppBar position="fixed">
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Box sx={{ flex: 1 }} />
+          <Link
+            variant="h6"
+            underline="none"
+            color="inherit"
+            href="/"
+            sx={{ fontSize: 24 }}
+          >
+            {"Water My Plants"}
+          </Link>
+          <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+            <Link
+              color="inherit"
+              variant="h6"
+              underline="none"
+              href="/login"
+              sx={rightLink}
+            >
+              {"Sign In"}
             </Link>
-            <Link to="/sign-up">
-              <button className="sign-up"> Sign Up</button>
+            <Link
+              variant="h6"
+              underline="none"
+              href="/sign-up"
+              sx={{ ...rightLink, color: "secondary.main" }}
+            >
+              {"Sign Up"}
             </Link>
-            <Link to="/login">
-              <button className="login"> Login </button>
-            </Link>
-          </Bttn>
-        </div>
-      </nav>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
       <Switch>
         <PrivateRoute path="/landing" component={PlantPage} />
         <Route exact path="/">
@@ -47,4 +72,4 @@ function App() {
   )
 }
 
-export default App
+export default withRoot(App)
