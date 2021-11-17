@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import url from "./URL"
 import axios from "axios"
-
+import { useHistory } from "react-router"
 // imports from react-router-dom go here //
 
 const initialFormValues = {
@@ -10,18 +10,24 @@ const initialFormValues = {
   phoneNumber: "",
 }
 
-function Signup() {
+function Signup({ refreshLoggedIn }) {
   const [formValues, setFormValues] = useState(initialFormValues)
-
+  const { push } = useHistory()
   const onChange = (e) => {
     const { name, value } = e.target
     setFormValues({ ...formValues, [name]: value })
   }
 
   const onSubmit = (e) => {
+    e.preventDefault()
     axios
       .post(`${url}/api/users/signup`, formValues)
-      .then((res) => {})
+      .then((res) => {
+        window.localStorage.setItem("token", res.data.token)
+        console.log(res.data)
+        refreshLoggedIn()
+        push("/landing")
+      })
       .catch((err) => {
         console.error(err)
       })
