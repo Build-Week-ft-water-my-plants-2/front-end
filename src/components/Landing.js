@@ -72,7 +72,7 @@ function PlantPage() {
 
   return (
     <Switch>
-      <Route exact path="/plants">
+      <Route exact path="/landing">
         <div className="container">
           <header>
             <h1>Plant Database</h1>
@@ -89,7 +89,7 @@ function PlantPage() {
           })}
         </div>
       </Route>
-      <Route path="/plants/:id">
+      <Route path="/landing/:id">
         <PlantDetails plants = {plants} />
       </Route>
     </Switch>
