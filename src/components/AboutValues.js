@@ -20,7 +20,7 @@ function AboutValues() {
       component="section"
       sx={{ display: "flex", overflow: "hidden", bgcolor: "#fff" }}
     >
-      <Container sx={{ mt: 15, mb: 30, display: "flex", position: "relative" }}>
+      <Container sx={{ mt: 10, mb: 20, display: "flex", position: "relative" }}>
         <Grid container spacing={5}>
           <Grid item xs={12} md={4}>
             <Box sx={item}>
