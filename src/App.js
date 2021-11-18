@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Route, Switch } from "react-router-dom"
 import PrivateRoute from "./components/PrivateRoute"
 import About from "./components/About"
+import AboutValues from "./components/AboutValues"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
 import PlantPage from "./components/Landing"
@@ -13,7 +14,7 @@ import AppBar from "./components/AppBar"
 import Toolbar from "./components/Toolbar"
 
 const rightLink = {
-  fontSize: 16,
+  fontSize: 15,
   color: "common.white",
   ml: 3,
 }
@@ -28,7 +29,7 @@ function App() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <AppBar position="fixed">
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ flex: 1 }} />
@@ -37,9 +38,9 @@ function App() {
             underline="none"
             color="inherit"
             href="/"
-            sx={{ fontSize: 24 }}
+            sx={{ fontSize: 20 }}
           >
-            {"Water My Plants"}
+            {"WMP"}
           </Link>
           {loggedIn && (
             <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
@@ -91,6 +92,7 @@ function App() {
         <PrivateRoute path="/landing" component={PlantPage} />
         <Route exact path="/">
           <About />
+          <AboutValues />
         </Route>
         <Route path="/sign-up">
           <Signup refreshLoggedIn={refreshLoggedIn} />
@@ -99,7 +101,7 @@ function App() {
           <Login refreshLoggedIn={refreshLoggedIn} />
         </Route>
       </Switch>
-    </div>
+    </React.Fragment>
   )
 }
 
