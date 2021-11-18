@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Route, Switch } from "react-router-dom"
 import PrivateRoute from "./components/PrivateRoute"
 import About from "./components/About"
+import AboutValues from "./components/AboutValues"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
 import PlantPage from "./components/Landing"
@@ -91,6 +92,7 @@ function App() {
         <PrivateRoute path="/landing" component={PlantPage} />
         <Route exact path="/">
           <About />
+          <AboutValues />
         </Route>
         <Route path="/sign-up">
           <Signup refreshLoggedIn={refreshLoggedIn} />
