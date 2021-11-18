@@ -29,7 +29,7 @@ function App() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <AppBar position="fixed">
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box sx={{ flex: 1 }} />
@@ -101,7 +101,7 @@ function App() {
           <Login refreshLoggedIn={refreshLoggedIn} />
         </Route>
       </Switch>
-    </div>
+    </React.Fragment>
   )
 }
 
