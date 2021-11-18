@@ -2,6 +2,11 @@ import React, { useState } from "react"
 import url from "./URL"
 import axios from "axios"
 import { useHistory } from "react-router"
+import Typography from "./Typography"
+import AppForm from "./AppForm"
+import FormButton from "../modules/FormButton"
+import withRoot from "../withRoot"
+import styled from "styled-components"
 // imports from react-router-dom go here //
 
 const initialFormValues = {
@@ -34,61 +39,68 @@ function Signup({ refreshLoggedIn }) {
   }
 
   return (
-    <div className="signup-wrapper">
-      {/** image placeholder */}
-      <div className="img-container">
-        <img src="#" alt="logo" />
-      </div>
-      <div className="background-img">
-        <img src="#" alt="logo" />
-      </div>
-
-      <form className="form-wrapper" onSubmit={onSubmit}>
-        <h2>Register</h2>
-        <label>
-          <input
-            value={formValues.phoneNumber}
-            placeholder="Phone Number"
-            name="phoneNumber"
-            type="text"
-            onChange={onChange}
-          />
-        </label>
-        <label>
-          <input
-            value={formValues.username}
-            placeholder="Username"
-            name="username"
-            type="text"
-            onChange={onChange}
-          />
-        </label>
-        <label>
-          <input
-            value={formValues.password}
-            placeholder="Password"
-            name="password"
-            type="password"
-            onChange={onChange}
-          />
-        </label>
-
-        {/** disable button */}
-        <div className="form-group submit">
-          <button>Register</button>
-          <div className="errors"></div>
-        </div>
-
-        <div className="account-bot">
-          <h3>
-            Already have an account? <span>LOGIN</span>
-          </h3>
-        </div>
-      </form>
-    </div>
+    <React.Fragment>
+      <AppForm>
+        <React.Fragment>
+          <Typography variant="h3" gutterBottom marked="center" align="center">
+            Register
+          </Typography>
+        </React.Fragment>
+        <form className="login-wrapper" onSubmit={onSubmit}>
+          {/* register card */}
+          <InputWrapper>
+            <Input
+              value={formValues.phoneNumber}
+              placeholder="Phone Number"
+              name="phoneNumber"
+              type="text"
+              onChange={onChange}
+            />
+            <Input
+              value={formValues.username}
+              placeholder="Username"
+              name="username"
+              type="text"
+              onChange={onChange}
+            />
+            <Input
+              value={formValues.password}
+              placeholder="Password"
+              name="password"
+              type="password"
+              onChange={onChange}
+            />
+          </InputWrapper>
+          <FormButton
+            sx={{ mt: 3, mb: 2 }}
+            size="large"
+            color="secondary"
+            fullWidth
+          >
+            {"Register"}
+          </FormButton>
+        </form>
+      </AppForm>
+    </React.Fragment>
   )
 }
 
-export default Signup
+export default withRoot(Signup)
 
-//** Styling goes here */
+const InputWrapper = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+`
+
+const Input = styled.input`
+  width: 100%;
+  font-size: 18px;
+  padding: 10px;
+  margin: 10px;
+  // background: papayawhip;
+  border: none;
+  border-radius: 3px;
+  ::placeholder {
+    color: #000;
+  }
+`
