@@ -23,7 +23,7 @@ function About() {
         variant="h5"
         sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        For plant lovers by plant lovers like you.
       </Typography>
       <Button
         color="secondary"
