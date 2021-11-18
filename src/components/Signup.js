@@ -46,12 +46,19 @@ function Signup({ refreshLoggedIn }) {
       <form className="form-wrapper" onSubmit={onSubmit}>
         <h2>Register</h2>
         <label>
+          {/* <PhoneInput
+            placeholder="Enter phone number"
+            value={formValues.phoneNumber}
+            onChange={onChange}
+          /> */}
           <input
             value={formValues.phoneNumber}
-            placeholder="Phone Number"
+            placeholder="123-456-7890"
             name="phoneNumber"
-            type="text"
+            type="tel"
             onChange={onChange}
+            pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+            required
           />
         </label>
         <label>
