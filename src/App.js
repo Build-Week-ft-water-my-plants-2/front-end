@@ -13,7 +13,7 @@ import AppBar from "./components/AppBar"
 import Toolbar from "./components/Toolbar"
 
 const rightLink = {
-  fontSize: 16,
+  fontSize: 15,
   color: "common.white",
   ml: 3,
 }
@@ -37,9 +37,9 @@ function App() {
             underline="none"
             color="inherit"
             href="/"
-            sx={{ fontSize: 24 }}
+            sx={{ fontSize: 20 }}
           >
-            {"Water My Plants"}
+            {"WMP"}
           </Link>
           {loggedIn && (
             <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
