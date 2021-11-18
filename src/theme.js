@@ -9,7 +9,7 @@ const rawTheme = createTheme({
       dark: "#1e1e1f",
     },
     secondary: {
-      light: "#fff5f8",
+      light: "#1e1e1f",
       main: "#3BD16F",
       dark: "#01B636",
     },
@@ -72,6 +72,7 @@ const theme = {
       ...rawTheme.typography.h3,
       ...fontHeader,
       fontSize: 42,
+      color: rawTheme.palette.common.white,
     },
     h4: {
       ...rawTheme.typography.h4,
@@ -100,6 +101,7 @@ const theme = {
     body2: {
       ...rawTheme.typography.body1,
       fontSize: 14,
+      color: rawTheme.palette.common.white,
     },
   },
 }

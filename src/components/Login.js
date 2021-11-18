@@ -2,6 +2,12 @@ import React, { useState } from "react"
 import url from "./URL"
 import axios from "axios"
 import { useHistory } from "react-router"
+import Link from "@mui/material/Link"
+import Typography from "./Typography"
+import AppForm from "./AppForm"
+import FormButton from "../modules/FormButton"
+import withRoot from "../withRoot"
+import styled from "styled-components"
 
 const initialFormValues = {
   username: "",
@@ -32,53 +38,66 @@ function Login({ refreshLoggedIn }) {
   }
 
   return (
-    <form className="login-wrapper" onSubmit={onSubmit}>
-      {/* image placeholder */}
-      <div className="img-container">
-        <img src="#" alt="logo" />
-      </div>
-      <div className="background-img">
-        <img src="#" alt="logo" />
-      </div>
-
-      {/* login card */}
-      <div className="form-wrapper">
-        <h2>LOGIN</h2>
-        <label>
-          <input
-            value={formValues.username}
-            onChange={onChange}
-            placeholder="Username"
-            name="username"
-            type="text"
-          />
-        </label>
-        <label>
-          <input
-            value={formValues.password}
-            onChange={onChange}
-            placeholder="Password"
-            name="password"
-            type="password"
-          />
-        </label>
-
-        {/** disable button */}
-        <div className="form-group submit">
-          <button>Login</button>
-          <div className="errors"></div>
-        </div>
-
-        <div className="account-bot">
-          <h2>
-            Don't have account yet? <span>REGISTER</span>
-          </h2>
-        </div>
-      </div>
-    </form>
+    <React.Fragment>
+      <AppForm>
+        <React.Fragment>
+          <Typography variant="h3" gutterBottom marked="center" align="center">
+            Sign In
+          </Typography>
+          <Typography variant="body2" align="center">
+            {"Need an account? "}
+            <Link
+              href="/sign-up"
+              align="center"
+              underline="always"
+              style={{ color: "white" }}
+            >
+              Sign up here.
+            </Link>
+          </Typography>
+        </React.Fragment>
+        <form className="login-wrapper" onSubmit={onSubmit}>
+          {/* login card */}
+          <div>
+            <Input
+              value={formValues.username}
+              onChange={onChange}
+              placeholder="Username"
+              name="username"
+              type="text"
+            />
+            <Input
+              value={formValues.password}
+              onChange={onChange}
+              placeholder="Password"
+              name="password"
+              type="password"
+            />
+          </div>
+          <FormButton
+            sx={{ mt: 3, mb: 2 }}
+            size="large"
+            color="secondary"
+            fullWidth
+          >
+            {"Sign In"}
+          </FormButton>
+        </form>
+      </AppForm>
+    </React.Fragment>
   )
 }
 
-export default Login
+const Input = styled.input`
+  font-size: 18px;
+  padding: 10px;
+  margin: 10px;
+  // background: papayawhip;
+  border: none;
+  border-radius: 3px;
+  ::placeholder {
+    color: #000;
+  }
+`
 
-//** Styling below */
+export default withRoot(Login)
