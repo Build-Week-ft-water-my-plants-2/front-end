@@ -89,13 +89,7 @@ function Typography(props) {
 }
 
 Typography.propTypes = {
-  /**
-   * The content of the component.
-   */
   children: PropTypes.node,
-  /**
-   * Override or extend the styles applied to the component.
-   */
   classes: PropTypes.object.isRequired,
   marked: PropTypes.oneOf(["center", "left", "none"]),
   /**
