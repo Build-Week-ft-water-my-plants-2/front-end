@@ -6,6 +6,7 @@ function Plant({ details }) {
     return <h3>Working fetching your plant&apos;s details...</h3>
   }
 
+
   return (
     <div
       onClick={() => push(`/landing/${details.id}`)}
@@ -16,12 +17,13 @@ function Plant({ details }) {
       <p>Species: {details.species}</p>
       <p>Watering Frequency: {details.h2oFrequency}</p>
 
-      <img
+      {details.imageURL && 
+        <img
         src={details.imageURL}
-        alt="this is a plant"
+        alt='this is a plant'
         style={{ maxWidth: "300px" }}
-      />
-    </div>
+      />}
+    </div> 
   )
 }
 

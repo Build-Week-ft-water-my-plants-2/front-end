@@ -32,8 +32,8 @@ function Login({ refreshLoggedIn }) {
         refreshLoggedIn()
         push("/landing")
       })
-      .catch((err) => {
-        console.log(err.response.data.message)
+      .catch(() => {
+        alert('username or password do not match. please try again.')
       })
   }
 

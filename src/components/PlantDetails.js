@@ -58,11 +58,12 @@ function PlantDetails({ plants, setPlants }) {
     <div>
       {!updatingPlant ? (
         <div className="plant details container">
-          <img
+          {details.imageURL && 
+            <img
             src={details.imageURL}
-            alt="this is a plant"
+            alt='this is a plant'
             style={{ maxWidth: "300px" }}
-          />
+          />}
           <h2>{details.id}</h2>
           <p>Nickname: {details.nickname}</p>
           <p>Species: {details.species}</p>
