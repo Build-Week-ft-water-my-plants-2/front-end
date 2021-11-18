@@ -58,7 +58,7 @@ function Login({ refreshLoggedIn }) {
         </React.Fragment>
         <form className="login-wrapper" onSubmit={onSubmit}>
           {/* login card */}
-          <div>
+          <InputWrapper>
             <Input
               value={formValues.username}
               onChange={onChange}
@@ -73,7 +73,7 @@ function Login({ refreshLoggedIn }) {
               name="password"
               type="password"
             />
-          </div>
+          </InputWrapper>
           <FormButton
             sx={{ mt: 3, mb: 2 }}
             size="large"
@@ -88,7 +88,13 @@ function Login({ refreshLoggedIn }) {
   )
 }
 
+const InputWrapper = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+`
+
 const Input = styled.input`
+  width: 100%;
   font-size: 18px;
   padding: 10px;
   margin: 10px;
