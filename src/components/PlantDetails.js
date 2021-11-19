@@ -4,6 +4,11 @@ import url from "./URL"
 import PlantChange from "./PlantChange"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 import { useHistory } from "react-router"
+import Typography from "./Typography"
+import AppForm from "./AppForm"
+import FormButton from "../modules/FormButton"
+import withRoot from "../withRoot"
+import styled from "styled-components"
 
 function PlantDetails({ plants, setPlants }) {
   const { push } = useHistory()
@@ -55,41 +60,90 @@ function PlantDetails({ plants, setPlants }) {
 
   if (!details) return <p> Plant does not exist or loading plant </p>
   return (
-    <div>
-      {!updatingPlant ? (
-        <div className="plant details container">
-          {details.imageURL && 
-            <img
-            src={details.imageURL}
-            alt='this is a plant'
-            style={{ maxWidth: "300px" }}
-          />}
-          <h2>{details.id}</h2>
-          <p>Nickname: {details.nickname}</p>
-          <p>Species: {details.species}</p>
-          <p>Watering Frequency: {details.h2oFrequency}</p>
-        </div>
-      ) : (
+    <React.Fragment>
+      <AppForm>
+        <React.Fragment>
+          <Typography
+            variant="h4"
+            gutterBottom
+            marked="center"
+            align="center"
+            color="#fff"
+          >
+            {details.id}
+          </Typography>
+        </React.Fragment>
         <div>
-          <PlantChange values={values} change={change} />
+          {!updatingPlant ? (
+            <Details>
+              {details.imageURL && (
+                <img
+                  src={details.imageURL}
+                  alt="this is a plant"
+                  style={{ maxWidth: "300px", marginBottom: "20px" }}
+                />
+              )}
+              <p>Nickname: {details.nickname}</p>
+              <p>Species: {details.species}</p>
+              <p>Watering Frequency: {details.h2oFrequency}</p>
+            </Details>
+          ) : (
+            <div>
+              <PlantChange values={values} change={change} />
+            </div>
+          )}
         </div>
-      )}
-
-      <div className="Plant Buttons">
         {!updatingPlant ? (
-          <button onClick={() => setUpdatingPlant(true)}> Update Plant </button>
+          <FormButton
+            sx={{ mt: 3, mb: 2 }}
+            size="large"
+            color="secondary"
+            fullWidth
+            onClick={() => setUpdatingPlant(true)}
+          >
+            {"Update"}
+          </FormButton>
         ) : (
           <>
-            <button onClick={() => setUpdatingPlant(false)}>
-              Cancel Update Plant
-            </button>
-            <button onClick={updatePlant}>Confirm Update Plant</button>
+            <FormButton
+              sx={{ mt: 3, mb: 2 }}
+              size="large"
+              color="secondary"
+              fullWidth
+              onClick={() => setUpdatingPlant(false)}
+            >
+              {"Cancel"}
+            </FormButton>
+            <FormButton
+              sx={{ mt: 0, mb: 2 }}
+              size="large"
+              color="secondary"
+              fullWidth
+              onClick={updatePlant}
+            >
+              {"Confirm"}
+            </FormButton>
           </>
         )}
-        <button onClick={deletePlant}> Delete Plant </button>
-      </div>
-    </div>
+        <FormButton
+          sx={{ mt: 0, mb: 2 }}
+          size="large"
+          color="secondary"
+          fullWidth
+          onClick={deletePlant}
+        >
+          {"Delete"}
+        </FormButton>
+      </AppForm>
+    </React.Fragment>
   )
 }
 
-export default PlantDetails
+const Details = styled.div`
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export default withRoot(PlantDetails)
