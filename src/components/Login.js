@@ -33,7 +33,7 @@ function Login({ refreshLoggedIn }) {
         push("/landing")
       })
       .catch(() => {
-        alert('username or password do not match. please try again.')
+        alert("username or password do not match. please try again.")
       })
   }
 
@@ -41,7 +41,13 @@ function Login({ refreshLoggedIn }) {
     <React.Fragment>
       <AppForm>
         <React.Fragment>
-          <Typography variant="h3" gutterBottom marked="center" align="center">
+          <Typography
+            variant="h4"
+            gutterBottom
+            marked="center"
+            align="center"
+            color="#fff"
+          >
             Sign In
           </Typography>
           <Typography variant="body2" align="center">
@@ -98,7 +104,6 @@ const Input = styled.input`
   font-size: 18px;
   padding: 10px;
   margin: 10px;
-  // background: papayawhip;
   border: none;
   border-radius: 3px;
   ::placeholder {

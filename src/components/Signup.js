@@ -42,7 +42,13 @@ function Signup({ refreshLoggedIn }) {
     <React.Fragment>
       <AppForm>
         <React.Fragment>
-          <Typography variant="h3" gutterBottom marked="center" align="center">
+          <Typography
+            variant="h4"
+            gutterBottom
+            marked="center"
+            align="center"
+            color="#fff"
+          >
             Register
           </Typography>
         </React.Fragment>
@@ -97,7 +103,6 @@ const Input = styled.input`
   font-size: 18px;
   padding: 10px;
   margin: 10px;
-  // background: papayawhip;
   border: none;
   border-radius: 3px;
   ::placeholder {
