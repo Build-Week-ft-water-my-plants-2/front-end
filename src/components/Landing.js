@@ -5,6 +5,7 @@ import Plant from "./Plant"
 import PlantDetails from "./PlantDetails"
 import PlantForm from "./PlantForm"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
+import styled from "styled-components"
 
 const initialFormValues = {
   nickname: "",
@@ -70,10 +71,11 @@ function PlantPage() {
             change={inputChange}
             submit={formSubmit}
           />
-
-          {plants.map((plant) => {
-            return <Plant key={plant.id} details={plant} />
-          })}
+          <CONTAINER>
+            {plants.map((plant) => {
+              return <Plant key={plant.id} details={plant} />
+            })}
+          </CONTAINER>
         </div>
       </Route>
       <Route path="/landing/:id">
@@ -82,5 +84,14 @@ function PlantPage() {
     </Switch>
   )
 }
+
+const CONTAINER = styled.div`
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: -2rem;
+`
 
 export default PlantPage
