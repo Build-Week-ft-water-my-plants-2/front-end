@@ -88,9 +88,9 @@ function PlantDetails({ plants, setPlants }) {
               <p>Watering Frequency: {details.h2oFrequency}</p>
             </Details>
           ) : (
-            <div>
+            <UpdateContainer>
               <PlantChange values={values} change={change} />
-            </div>
+            </UpdateContainer>
           )}
         </div>
         {!updatingPlant ? (
@@ -144,6 +144,12 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+const UpdateContainer = styled.div`
+  width: 100%;
+  margin-top: -150px;
+  margin-bottom: -100px;
 `
 
 export default withRoot(PlantDetails)
