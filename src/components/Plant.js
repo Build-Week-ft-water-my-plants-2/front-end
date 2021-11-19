@@ -47,6 +47,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   color: #fff;
+  margin-top: -2rem;
 `
 
 export default Plant
