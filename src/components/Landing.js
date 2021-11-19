@@ -65,10 +65,6 @@ function PlantPage() {
     <Switch>
       <Route exact path="/landing">
         <div className="container">
-          <header>
-            <h1>Plant Database</h1>
-          </header>
-
           <PlantForm
             values={formValues}
             change={inputChange}

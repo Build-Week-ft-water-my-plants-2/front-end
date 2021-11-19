@@ -67,6 +67,7 @@ const theme = {
       ...rawTheme.typography.h2,
       ...fontHeader,
       fontSize: 48,
+      color: rawTheme.palette.common.white,
     },
     h3: {
       ...rawTheme.typography.h3,
