@@ -4,7 +4,7 @@ import Container from "@mui/material/Container"
 import Box from "@mui/material/Box"
 import Paper from "../components/Paper"
 
-function AppForm(props) {
+function AddPlant(props) {
   const { children } = props
 
   return (
@@ -28,8 +28,8 @@ function AppForm(props) {
   )
 }
 
-AppForm.propTypes = {
+AddPlant.propTypes = {
   children: PropTypes.node,
 }
 
-export default AppForm
+export default AddPlant

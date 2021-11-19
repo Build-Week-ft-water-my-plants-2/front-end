@@ -31,14 +31,14 @@ function App() {
   return (
     <React.Fragment>
       <AppBar position="fixed">
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Box sx={{ flex: 1 }} />
+        <Toolbar sx={{ justifyContent: "flex-start" }}>
+          <Box sx={{ flex: 0 }} />
           <Link
             variant="h6"
             underline="none"
             color="inherit"
             href="/"
-            sx={{ fontSize: 20 }}
+            sx={{ fontSize: 24 }}
           >
             {"WMP"}
           </Link>
