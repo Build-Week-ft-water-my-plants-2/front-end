@@ -26,7 +26,8 @@ function Signup({ refreshLoggedIn }) {
         window.localStorage.setItem("token", res.data.token)
         console.log(res.data)
         refreshLoggedIn()
-        push("/landing")
+
+        push("/contratulation")
       })
       .catch((err) => {
         console.error(err)
