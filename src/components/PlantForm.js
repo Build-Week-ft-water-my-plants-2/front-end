@@ -5,7 +5,12 @@ import FormButton from "../modules/FormButton"
 import styled from "styled-components"
 
 function PlantForm(props) {
-  const { values, submit, change } = props
+  const { values, 
+    submit, 
+    change, 
+    disabled,
+    errors, 
+  } = props
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -13,7 +18,7 @@ function PlantForm(props) {
   }
 
   const onChange = (evt) => {
-    const { name, value } = evt.target
+    const { name, value} = evt.target
     change(name, value)
   }
 
@@ -33,6 +38,7 @@ function PlantForm(props) {
         </React.Fragment>
         <form className="form-container" onSubmit={onSubmit}>
           <h4 style={{ color: "#fff" }}>Add plant to database:</h4>
+
           <InputWrapper>
             <Input
               value={values.nickname}
@@ -66,6 +72,7 @@ function PlantForm(props) {
             />
           </InputWrapper>
           <FormButton
+            disabled = {disabled}
             sx={{ mt: 3, mb: 2 }}
             size="large"
             color="secondary"
@@ -74,6 +81,11 @@ function PlantForm(props) {
             {"Add"}
           </FormButton>
         </form>
+        <div className='errors'>
+          <div>{errors.nickname}</div>
+          <div>{errors.species}</div>
+          <div>{errors.h2oFrequency}</div>
+        </div>
       </AddPlant>
     </React.Fragment>
   )
