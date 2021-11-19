@@ -39,14 +39,14 @@ function PlantForm(props) {
               onChange={onChange}
               name="nickname"
               type="text"
-              placeholder="Plant Nickname"
+              placeholder="Nickname"
             />
             <Input
               value={values.species}
               onChange={onChange}
               name="species"
               type="text"
-              placeholder="Plant Species"
+              placeholder="Species"
             />
           </InputWrapper>
           <InputWrapper>
@@ -55,14 +55,14 @@ function PlantForm(props) {
               onChange={onChange}
               name="h2oFrequency"
               type="text"
-              placeholder="Watering Frequency"
+              placeholder="Water Freq."
             />
             <Input
               value={values.imageURL}
               onChange={onChange}
               name="imageURL"
               type="text"
-              placeholder="Plant Image URL"
+              placeholder="Image URL"
             />
           </InputWrapper>
           <FormButton

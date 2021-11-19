@@ -71,11 +71,11 @@ function PlantPage() {
             change={inputChange}
             submit={formSubmit}
           />
-          <CONTAINER>
+          <Container>
             {plants.map((plant) => {
               return <Plant key={plant.id} details={plant} />
             })}
-          </CONTAINER>
+          </Container>
         </div>
       </Route>
       <Route path="/landing/:id">
@@ -85,7 +85,7 @@ function PlantPage() {
   )
 }
 
-const CONTAINER = styled.div`
+const Container = styled.div`
   width: 100%;
   padding: 0 1rem;
   display: flex;
