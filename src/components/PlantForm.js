@@ -76,11 +76,14 @@ function PlantForm(props) {
             {"Add"}
           </FormButton>
         </form>
-        <div className="errors">
-          <div>{errors.nickname}</div>
+        <Errors>
+          <div>
+            {errors.nickname ? }
+          </div>
+          {/* <div>{errors.nickname}</div>
           <div>{errors.species}</div>
-          <div>{errors.h2oFrequency}</div>
-        </div>
+          <div>{errors.h2oFrequency}</div> */}
+        </Errors>
       </AddPlant>
     </React.Fragment>
   )
@@ -103,6 +106,10 @@ const Input = styled.input`
   ::placeholder {
     color: gray;
   }
+`
+
+const Errors = styled.div`
+  color: red;
 `
 
 export default PlantForm
