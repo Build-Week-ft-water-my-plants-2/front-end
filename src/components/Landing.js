@@ -74,7 +74,7 @@ function PlantPage() {
       nickname: formValues.nickname.trim(),
       species: formValues.species.trim(),
       h2oFrequency: formValues.h2oFrequency.trim(),
-      imageURL: formValues.imageURL,
+      imageURL: formValues.imageURL.trim(),
     }
     postNewPlant(newPlant)
   }

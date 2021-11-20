@@ -16,6 +16,8 @@ const formSchema = yup.object().shape({
         .trim()
         .required('Follow input guidelines')
         .min(3, 'Follow input guidelines'),
+    imageURL: yup
+        .string()
 })
 
 export default formSchema;
