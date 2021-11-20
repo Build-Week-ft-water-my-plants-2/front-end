@@ -77,12 +77,9 @@ function PlantForm(props) {
           </FormButton>
         </form>
         <Errors>
-          <div>
-            {errors.nickname ? }
-          </div>
-          {/* <div>{errors.nickname}</div>
+          <div>{errors.nickname}</div>
           <div>{errors.species}</div>
-          <div>{errors.h2oFrequency}</div> */}
+          <div>{errors.h2oFrequency}</div>
         </Errors>
       </AddPlant>
     </React.Fragment>
