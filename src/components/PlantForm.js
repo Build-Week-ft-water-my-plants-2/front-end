@@ -5,12 +5,7 @@ import FormButton from "../modules/FormButton"
 import styled from "styled-components"
 
 function PlantForm(props) {
-  const { values, 
-    submit, 
-    change, 
-    disabled,
-    errors, 
-  } = props
+  const { values, submit, change, disabled, errors } = props
 
   const onSubmit = (evt) => {
     evt.preventDefault()
@@ -18,7 +13,7 @@ function PlantForm(props) {
   }
 
   const onChange = (evt) => {
-    const { name, value} = evt.target
+    const { name, value } = evt.target
     change(name, value)
   }
 
@@ -72,7 +67,7 @@ function PlantForm(props) {
             />
           </InputWrapper>
           <FormButton
-            disabled = {disabled}
+            disabled={disabled}
             sx={{ mt: 3, mb: 2 }}
             size="large"
             color="secondary"
@@ -81,7 +76,7 @@ function PlantForm(props) {
             {"Add"}
           </FormButton>
         </form>
-        <div className='errors'>
+        <div className="errors">
           <div>{errors.nickname}</div>
           <div>{errors.species}</div>
           <div>{errors.h2oFrequency}</div>
@@ -106,7 +101,7 @@ const Input = styled.input`
   border: none;
   border-radius: 3px;
   ::placeholder {
-    color: #000;
+    color: gray;
   }
 `
 

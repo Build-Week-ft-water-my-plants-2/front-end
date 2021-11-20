@@ -6,8 +6,8 @@ import PlantDetails from "./PlantDetails"
 import PlantForm from "./PlantForm"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 import styled from "styled-components"
-import * as yup from 'yup'
-import schema from './Schema'
+import * as yup from "yup"
+import schema from "./Schema"
 
 const initialFormValues = {
   nickname: "",
@@ -17,22 +17,20 @@ const initialFormValues = {
 }
 
 const initialFormErrors = {
-  nickname: '',
-  species: '',
-  h2oFrequency: '',
-  imageURL: '',
+  nickname: "",
+  species: "",
+  h2oFrequency: "",
+  imageURL: "",
 }
 
 const initialPlants = []
 const initialDisabled = true
 
-
 function PlantPage() {
   const [plants, setPlants] = useState(initialPlants)
   const [formValues, setFormValues] = useState(initialFormValues)
   const [formErrors, setFormErrors] = useState(initialFormErrors) // object
-  const [disabled, setDisabled] = useState(initialDisabled)  
-
+  const [disabled, setDisabled] = useState(initialDisabled)
 
   const getPlants = () => {
     axiosWithAuth()
@@ -56,13 +54,15 @@ function PlantPage() {
   }
 
   const validate = (name, value) => {
-    yup.reach(schema, name).validate(value)
-      .then(() => setFormErrors({ ...formErrors, [name]: '' }))
-      .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0]}))
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => setFormErrors({ ...formErrors, [name]: "" }))
+      .catch((err) => setFormErrors({ ...formErrors, [name]: err.errors[0] }))
   }
 
   const inputChange = (name, value) => {
-    validate(name, value);
+    validate(name, value)
     setFormValues({
       ...formValues,
       [name]: value,
@@ -84,7 +84,7 @@ function PlantPage() {
   }, [])
 
   useEffect(() => {
-    schema.isValid(formValues).then(valid => setDisabled(!valid));
+    schema.isValid(formValues).then((valid) => setDisabled(!valid))
   }, [formValues])
 
   return (
