@@ -55,13 +55,15 @@ function Signup({ refreshLoggedIn }) {
         <form className="login-wrapper" onSubmit={onSubmit}>
           {/* register card */}
           <InputWrapper>
-            <Input
-              value={formValues.phoneNumber}
-              placeholder="Phone Number"
-              name="phoneNumber"
-              type="text"
-              onChange={onChange}
-            />
+          <Input
+            value={formValues.phoneNumber}
+            placeholder="123-456-7890"
+            name="phoneNumber"
+            type="tel"
+            onChange={onChange}
+            pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+            required
+          />
             <Input
               value={formValues.username}
               placeholder="Username"
