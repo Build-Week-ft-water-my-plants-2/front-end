@@ -107,7 +107,7 @@ const Input = styled.input`
   border: none;
   border-radius: 3px;
   ::placeholder {
-    color: #000;
+    color: gray;
   }
 `
 
